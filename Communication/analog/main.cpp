@@ -87,14 +87,14 @@ void setup_routine()
     twist.setVersion(shield_TWIST_V1_2);
     twist.initAllBuck();
 
-    communication.analogCommunication.init();
+    communication.analog.init();
 
     #ifdef SERVER
-    communication.analogCommunication.setAnalogCommValue(2000);
+    communication.analog.setAnalogCommValue(2000);
     #endif
 
     #ifdef CLIENT
-    syncCommunication.initSlave(); // start the synchronisation
+    communication.sync.initSlave(); // start the synchronisation
     #endif
 
     // Then declare tasks
@@ -141,12 +141,12 @@ void loop_critical_task()
     counter_sinus++;
     if(counter_sinus > num_samples) counter_sinus = 0;
 
-    communication.analogCommunication.setAnalogCommValue(sine_ref*4000);
+    communication.analog.setAnalogCommValue(sine_ref*4000);
 
     #endif
 
     #ifdef CLIENT
-    sine_ref_analog = communication.analogCommunication.getAnalogCommValue()/4000;
+    sine_ref_analog = communication.analog.getAnalogCommValue()/4000;
     #endif
 }
 

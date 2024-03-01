@@ -99,14 +99,14 @@ void setup_routine()
     twist.setVersion(shield_TWIST_V1_2);
     twist.initAllBuck();
 
-    communication.rs485Communication.configure(buffer_tx, buffer_rx, sizeof(consigne_struct), reception_function, 10625000, true); // custom configuration for RS485 to have a 20Mbits/s speed communication
+    communication.rs485.configure(buffer_tx, buffer_rx, sizeof(consigne_struct), reception_function, SPEED_20M); // configuration for RS485 to have a 20Mbits/s speed communication
 
     #ifdef SERVER
-    communication.analogCommunication.setAnalogCommValue(2000);
+    communication.analog.setAnalogCommValue(2000);
     #endif
 
     #ifdef CLIENT
-    syncCommunication.initSlave(); // start the synchronisation
+    sync.initSlave(); // start the synchronisation
     #endif
 
     // Then declare tasks
@@ -150,7 +150,6 @@ void loop_background_task()
  */
 void loop_critical_task()
 {
-
     t = counter_sinus / (SAMPLE_RATE); // Temps en secondes
     sine_ref = AMPLITUDE * sin(2 * PI * SIGNAL_FREQ * t) + 0.5; // Calcul de l'échantillon
     counter_sinus++;
@@ -158,7 +157,7 @@ void loop_critical_task()
 
     tx_consigne.Sine_ref = sine_ref;
 
-    communication.rs485Communication.startTransmission();
+    communication.rs485.startTransmission();
 }
 
 /**

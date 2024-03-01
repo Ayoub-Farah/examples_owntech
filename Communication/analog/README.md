@@ -33,8 +33,8 @@ The server will send a sinewave varying  between 0 and 1. To flash the server ma
 We initalize the analog communication with :
 
 ```cpp
-communication.analogCommunication.init();
-communication.analogCommunication.setAnalogCommValue(2000);
+communication.analog.init();
+communication.analog.setAnalogCommValue(2000);
 ```
 `communication.analogCommunication.init()` will initialize the analog communication (DAC and ADC).
 
@@ -49,7 +49,7 @@ sine_ref = AMPLITUDE * sin(2 * PI * SIGNAL_FREQ * t) + 0.5; // Calcul de l'écha
 counter_sinus++;
 if(counter_sinus > num_samples) counter_sinus = 0;
 
-communication.analogCommunication.setAnalogCommValue(sine_ref*4000);
+communication.analog.setAnalogCommValue(sine_ref*4000);
 ```
 
 ### Client code
@@ -57,9 +57,9 @@ communication.analogCommunication.setAnalogCommValue(sine_ref*4000);
 The client is following the same step but instead of sending values, it is receiving and reading it in the critical task :
 
 ```cpp
-sine_ref_analog = communication.analogCommunication.getAnalogCommValue()/4000;
+sine_ref_analog = communication.analog.getAnalogCommValue()/4000;
 ```
 
 ## Expected result
 
-Use [ownplot](https://github.com/owntech-foundation/OwnPlot) and connect ir to the client. You should see the sinewave.
+Use [ownplot](https://github.com/owntech-foundation/OwnPlot) and connect it to the client. You should see the sinewave.
