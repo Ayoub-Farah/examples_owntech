@@ -150,8 +150,8 @@ void loop_background_task()
  */
 void loop_critical_task()
 {
-    t = counter_sinus / (SAMPLE_RATE); // Temps en secondes
-    sine_ref = AMPLITUDE * sin(2 * PI * SIGNAL_FREQ * t) + 0.5; // Calcul de l'échantillon
+    t = counter_sinus / (SAMPLE_RATE);
+    sine_ref = AMPLITUDE * sin(2 * PI * SIGNAL_FREQ * t) + 0.5;
     counter_sinus++;
     if(counter_sinus > num_samples) counter_sinus = 0;
 
