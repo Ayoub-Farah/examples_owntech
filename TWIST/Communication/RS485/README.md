@@ -1,4 +1,4 @@
-# Minimal RS485 MASTER/FOLLOWER Example (OwnTech Spin)
+# Minimal RS485 MASTER/FOLLOWER 
 
 This is a minimal two-board RS485 example.
 
@@ -59,7 +59,7 @@ press p in the serial monitor to start the transmission.
 
 ## Task architecture
 
-The example keeps the same 3-task structure:
+The example has the following three tasks :
 
 - `loop_background_task` (status print + LED + 2 s sleep)
 - `loop_critical_task` (100 µs periodic control + RS485 transmission)
