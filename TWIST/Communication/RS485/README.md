@@ -9,7 +9,7 @@ This is a minimal two-board RS485 example.
 
 ## Minimal hardware setup
 
-[](Images/schema_MF_TWIST.png)
+![](Images/schema_MF_TWIST.png)
 
 Connect two TWIST with a RJ45 cables, and supply the two TWIST with at least 12V.
 
